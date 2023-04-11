@@ -1,14 +1,13 @@
-const dispenseCoin = function(amount) {
+const dispenseCoin = function(amount, denominations) {
   let currentAmount = amount;
   let coins = 0;
-  const denominations = [10, 5, 2, 1];
+  const denominationList = denominations.reverse();
 
-  for (const currentDenomination of denominations) {
+  for (const currentDenomination of denominationList) {
     coins += Math.floor(currentAmount / currentDenomination);
     currentAmount %= currentDenomination;
   }
 
-  coins += currentAmount;
   return coins;
 }
 
