@@ -14,11 +14,15 @@ const ejectElement = function (array, index) {
 
 const reverseSortDenomination = function(denominations) {
   const reverseDenomination = [];
-  const currentDenominations = denominations.slice();
+  let currentDenominations = denominations.slice();
 
   for (let index in denominations) {
-    reverseDenomination.push(maxOfNumbers(currentDenominations));
+    const currentMax = maxOfNumbers(currentDenominations);
+    reverseDenomination.push(currentMax);
+    const indexOfCurrentMax = currentDenominations.indexOf(currentMax);
+    currentDenominations = ejectElement(currentDenominations, indexOfCurrentMax);
   }
+  return reverseDenomination;
 }
 
 const dispenseCoin = function(amount, denominations) {
@@ -37,3 +41,4 @@ const dispenseCoin = function(amount, denominations) {
 exports.dispenseCoin = dispenseCoin;
 exports.maxOfNumbers = maxOfNumbers;
 exports.ejectElement = ejectElement;
+exports.reverseSort = reverseSortDenomination;
