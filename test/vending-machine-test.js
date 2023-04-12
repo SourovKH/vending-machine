@@ -24,6 +24,7 @@ assertTest(2, vendingMachine(11,[1,2,5,10]), "For 11 ruppees and denominations a
 assertTest(2, vendingMachine(15, [1,4,5,10]), "For 15 rupees and denominations are (1,2,5,10), vending machine should give 2 coins", "vendingMachine");
 assertTest(3, vendingMachine(8, [5,1,2]), "For 8 rupees and denomination are (5,1,2), vending machine should give 3 coins", "vendingMachine");
 assertTest(3, vendingMachine(13, [7,1,3,2]), "For 13 rupees and denomination are (7,1,3,2), vending machine should give 3 coins", "vendingMachine");
+assertTest(4, vendingMachine(23, [7,1,3,2]), "For 23 rupees and denomination are (7,1,3,2), vending machine should give 4 coins", "vendingMachine");
 assertTest(2, maxOfNumbers([1,2]), "for (1,2), it should give 2");
 assertTest(3, maxOfNumbers([1,3,2]), "for (1,3,2), it should give 3");
 assertArray([7,4], ejectElement([7,1,4], 1), "for (7,1,4), new array should be [7,4]");
