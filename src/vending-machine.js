@@ -28,16 +28,16 @@ const sortDenominationInDescending = function(denominations) {
 
 const countDenominations = function(amount, denominations) {
   let currentAmount = amount;
-  let coinCount = {};
+  const coinCounts = {};
   const denominationList = sortDenominationInDescending(denominations);
 
   for (const currentDenomination of denominationList) {
     const coins = Math.floor(currentAmount / currentDenomination);
     currentAmount %= currentDenomination;
-    coinCount[currentDenomination] = coins;
+    coinCounts[currentDenomination] = coins;
   }
 
-  return coinCount;
+  return coinCounts;
 }
 
 const dispenseCoin = function(amount, denominations) {
