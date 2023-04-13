@@ -26,6 +26,20 @@ const sortDenominationInDescending = function(denominations) {
   return reverseDenomination;
 }
 
+const countDenominations = function(amount, denominations) {
+  let currentAmount = amount;
+  let coinCount = {};
+  const denominationList = sortDenominationInDescending(denominations);
+
+  for (const currentDenomination of denominationList) {
+    const coins = Math.floor(currentAmount / currentDenomination);
+    currentAmount %= currentDenomination;
+    coinCount[currentDenomination] = coins;
+  }
+
+  return coinCount;
+}
+
 const dispenseCoin = function(amount, denominations) {
   let currentAmount = amount;
   let coins = 0;
@@ -43,3 +57,4 @@ exports.dispenseCoin = dispenseCoin;
 exports.maxOfNumbers = maxOfNumbers;
 exports.ejectElement = ejectElement;
 exports.descendingSort = sortDenominationInDescending;
+exports.countDenominations = countDenominations;
