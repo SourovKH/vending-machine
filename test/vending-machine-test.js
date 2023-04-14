@@ -6,9 +6,6 @@ const assertArray = testing.assertArray;
 const displayHeader = testing.displayHeader;
 const displaySummary = testing.displaySummary;
 const vendingMachine = vending.dispenseCoin;
-const maxOfNumbers = vending.maxOfNumbers;
-const ejectElement = vending.ejectElement;
-const descendingSort = vending.descendingSort;
 const countDenominations = vending.countDenominations;
 
 const testsForTotalCoinCount = function() {
@@ -17,7 +14,7 @@ const testsForTotalCoinCount = function() {
   assertTest(1, vendingMachine(1, [1]), "For 1 rupee and denomination is 1, vending machine should give 1 coin");
   assertTest(1, vendingMachine(2, [1, 2]), "For 2 rupees and denominations are (1,2), vending machine should give 1 coin");
   assertTest(2, vendingMachine(3, [1, 2]), "For 3 rupees and denominations are (1,2), vending machine should give 2 coins");
-  assertTest(1, vendingMachine(5, [5]), "For 5 rupees and denomination is 5, vending machine should give 1 coins");
+  assertTest(1, vendingMachine(5, [5]), "For 5 rupees and denomination is 5, vending machine should give 1 coin");
   assertTest(2, vendingMachine(6, [1, 5]), "For 6 rupees and denominations are (1,5), vending machine should give 2 coins");
   assertTest(2, vendingMachine(7, [2, 5]), "For 7 rupees and denominations are (2,5), vending machine should give 2 coins");
   assertTest(4, vendingMachine(13, [1, 4, 7]), "For 13 rupees and denominations are (1,4,7), vending machine should give 4 coins");
@@ -32,43 +29,25 @@ const testsForTotalCoinCount = function() {
   assertTest(4, vendingMachine(23, [7,1,3,2]), "For 23 rupees and denomination are (7,1,3,2), vending machine should give 4 coins");
 }
 
-const testsForMaxOfNumbers = function() {
-  displayHeader("maxOfNumbres");
-
-  assertTest(2, maxOfNumbers([1,2]), "for (1,2), it should give 2");
-  assertTest(3, maxOfNumbers([1,3,2]), "for (1,3,2), it should give 3");
-}
-
-const testsForEjectElement = function() {
-  displayHeader("ejectElement");
-
-  assertArray([7,4], ejectElement([7,1,4], 1), "for (7,1,4), new array should be [7,4]");
-  assertArray([7,4,5], ejectElement([7,4,1,5], 2), "for (7,4,1,5), new array should be [7,4,5]");
-}
-
-const testsForDescendingSort = function() {
-  displayHeader("descendingSort");
-
-  assertArray([7,5,4], descendingSort([7,4,5]), "for (7,4,5), new array should be [7,5,4]");
-  assertArray([7,5,4,2], descendingSort([7,4,2,5]), "for (7,4,2,5), new array should be [7,5,4,2]");
-}
-
 const testsToCountDenomination = function() {
   let countedDenominations; 
 
   displayHeader("rs 1 and denomination is 1");
   countedDenominations = countDenominations(1,[1]);
-  assertTest(countedDenominations[1], 1, "for 1 rupee 1rs coin should be 1");
+  assertTest(countedDenominations[1], 1, "1, 1rs coin");
 
   displayHeader("rs 3 and denominations are 1,2");
   countedDenominations = countDenominations(3,[1,2]);
-  assertTest(countedDenominations[1], 1, "for 1 rupee 1rs coin should be 1");
-  assertTest(countedDenominations[2], 1, "for 1 rupee 1rs coin should be 1");
+  assertTest(countedDenominations[1], 1, "1, 1rs coin");
+  assertTest(countedDenominations[2], 1, "1, 2rs coin");
+
+  displayHeader("rs 9 and denominations are 1,2,5");
+  countedDenominations = countDenominations(9,[1,5,2]);
+  assertTest(countedDenominations[1], 0, "0, 1rs coin");
+  assertTest(countedDenominations[2], 2, "2, 2rs coins");
+  assertTest(countedDenominations[5], 1, "1, 5rs coin");
 }
 
 testsForTotalCoinCount();
-testsForMaxOfNumbers();
-testsForEjectElement();
-testsForDescendingSort();
 testsToCountDenomination();
 displaySummary();
