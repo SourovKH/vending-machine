@@ -1,4 +1,13 @@
-const sortIndescendingOrder = function(numbers) {
+const sumOfNumbers = function (numbers) {
+  let sum = 0;
+
+  for (let currentTerm = 0; currentTerm < numbers.length; currentTerm++) {
+    sum += numbers[currentTerm];
+  }
+  return sum;
+}
+
+const sort = function(numbers) {
   let sortedNumbers = numbers.slice();
 
   for (let index = 1; index < sortedNumbers.length ; index++) {
@@ -16,5 +25,6 @@ const sortIndescendingOrder = function(numbers) {
   return sortedNumbers;
 }
 
-exports.descendingSort = sortIndescendingOrder;
+exports.sort = sort;
+exports.sum = sumOfNumbers;
 

@@ -1,15 +1,15 @@
-const sortingUtilities = require("./sorting-utilities.js");
+const arrayUtilities = require("./array-utilities.js");
 
-const sortInDescendingOrder = sortingUtilities.descendingSort;
+const sort= arrayUtilities.sort;
 
 const countDenominations = function(amount, denominations) {
-  let currentAmount = amount;
+  let remainingAmount = amount;
   const coinCounts = {};
-  const denominationList = sortInDescendingOrder(denominations);
+  const denominationList = sort(denominations);
 
   for (const currentDenomination of denominationList) {
-    const coins = Math.floor(currentAmount / currentDenomination);
-    currentAmount %= currentDenomination;
+    const coins = Math.floor(remainingAmount / currentDenomination);
+    remainingAmount %= currentDenomination;
     coinCounts[currentDenomination] = coins;
   }
 
@@ -19,7 +19,7 @@ const countDenominations = function(amount, denominations) {
 const dispenseCoin = function(amount, denominations) {
   let currentAmount = amount;
   let coins = 0;
-  const denominationList = sortInDescendingOrder(denominations);
+  const denominationList = sort(denominations);
 
   for (const currentDenomination of denominationList) {
     coins += Math.floor(currentAmount / currentDenomination);
